@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # MySQL Database dùng chung
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    networks:
+      - app-network
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+
+networks:
+  keycloak-network:
+    driver: bridge
+  app-network:
+    driver: bridge
+
+volumes:
+  keycloak-db-data:
+  mysql-data:

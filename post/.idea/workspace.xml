@@ -4,7 +4,112 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24f6f2dc-2772-4f06-8a07-ae291cb16e4d" name="Changes" comment="" />
+    <list default="true" id="24f6f2dc-2772-4f06-8a07-ae291cb16e4d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../ML/Main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/TestPkl.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/comment_spam_model.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/comment_tfidf_vectorizer.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/data/comment_spam.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/data/post_spam.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/logistic_regression_model.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/naive_bayes_model.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/spam_comment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/spam_post.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/svm_model.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/train_pkl_comment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ML/train_pkl_post.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/PostApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/api/CommentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/api/LikeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/api/NotificationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/api/PostController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/configuration/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/configuration/CustomAuthoritiesConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/configuration/FirebaseConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/configuration/JwtAuthenticationEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/configuration/Kafka.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/configuration/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/configuration/RedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/configuration/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/exception/ErrorCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/exception/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/exception/ErrorResponseMultipleField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/exception/ErrorType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/app/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/PageResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/ResponseData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/enumType/CommentStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/enumType/DeleteBy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/enumType/LikeStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/enumType/PostSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/enumType/PostStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/enumType/TypeReference.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/exception/AppErrorCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/exception/AppException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/validation/DateAnnotationCus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/validation/DateValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/validation/EmailValidation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/validation/EmailValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/validation/EnumListValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/validation/EnumValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/validation/EnumValueValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/validation/PhoneNumber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/validation/PhoneValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/common/validation/ValidEnumList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/file/FileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/kafka/CommentDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/kafka/KafkaConsumerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/kafka/KafkaProducerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/kafka/PostDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/NotificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/NotificationTemplate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/dto/CountNotificationResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/dto/NotificationCommentCreatedToOtherComment1stRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/dto/NotificationCommentPostOwnerRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/dto/NotificationCommentReplyRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/dto/NotificationLikeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/dto/NotificationOtherUserReplyRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/dto/NotificationPostRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/dto/NotificationResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/dto/SetTokenDeviceRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/dto/UpdateRequest/OnCommentRemove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/dto/UpdateRequest/OnPostRemove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/entity/Notification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/entity/NotificationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/entity/TokenDeviceFirebase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/notification/entity/TokenDeviceFirebaseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/dto/request/CreateCommentRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/dto/request/CreateLikeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/dto/request/CreatePostRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/dto/response/CreateCommentResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/dto/response/CreatePostResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/dto/response/LikeResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/dto/response/feed/CommentResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/dto/response/feed/PostResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/dto/response/feed/UserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/entity/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/entity/Like.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/entity/Post.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/repository/CommentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/repository/LikeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/repository/PostRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/service/CommentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/service/LikeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/post/service/PostService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/user/RedisService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/user/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kma/ktlt/post/domain/user/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/key-firebase.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kma/ktlt/post/PostApplicationTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +123,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
@@ -51,6 +159,9 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;42b90196b487c54069097a68fe98ab6f&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -88,8 +199,9 @@
       <workItem from="1740923824917" duration="42997000" />
       <workItem from="1741244615814" duration="82968000" />
       <workItem from="1741880118333" duration="12000" />
-      <workItem from="1741880134873" duration="123000" />
-      <workItem from="1741880289248" duration="7000" />
+      <workItem from="1741880306747" duration="5000" />
+      <workItem from="1741880321875" duration="37000" />
+      <workItem from="1741880412935" duration="60000" />
     </task>
     <servers />
   </component>
