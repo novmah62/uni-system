@@ -24,6 +24,8 @@ services:
     ports:
       - "6543:5432"
 
+  
+
   keycloak-mysql:
     container_name: keycloak-mysql
     image: mysql:5.7
@@ -53,5 +55,64 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
     ports:
       - "8080:8080"
+
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    networks:
+      - app-network
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql  
+
+  redis:
+    image: redis:latest
+    container_name: redis-cache
+    restart: always
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - keycloak-network
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    restart: always
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - keycloak-network
+
+      
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    restart: always
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS:
+        PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP:
+        PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_CREATE_TOPICS: "keycloak-events:1:1"
+      KAFKA_LOG_RETENTION_HOURS: 168 
+    networks:
+      - keycloak-network
 #    volumes:
 #      - ./keycloak-realms/:/opt/keycloak/data/import/
