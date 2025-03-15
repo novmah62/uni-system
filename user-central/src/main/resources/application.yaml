@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: user-central
+  profiles:
+    active: localhost
+
+server:
+  port: 8081
+
+---
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:6543/postgres?useSSL=false
+    username: postgres
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+
+
+
+security:
+  oauth2:
+    resource-server:
+      jwt:
+        issuer-uri=http://keycloak:8080/realms/uni-system
+jwt:
+  issuer_uri: http://keycloak:8080/realms/uni-system-realm/protocol/openid-connect/token
+  client_id: spring-client
+  client_secret: eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJiMWM3ODZkMC1hOGJhLTQyYWYtYTYwZS1jYzg1MzM0NmQ1NDUifQ.eyJleHAiOjE3NDE2ODIyOTMsImlhdCI6MTc0MTU5NTg5MywianRpIjoiMjljNTA3ODAtZTAzOC00YmYzLWI1NTQtZmJiYjFmNWRlMDcwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy91bmktc3lzdGVtIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy91bmktc3lzdGVtIiwidHlwIjoiSW5pdGlhbEFjY2Vzc1Rva2VuIn0.UUCESPLqyy4YokytmonA3DLuYY_hsEEok5F6bUWlrEE
+  grant_type: client_credentials
+  scope: openid offline_access
