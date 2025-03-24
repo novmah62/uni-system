@@ -15,39 +15,44 @@ services:
 #      SPRING_DATASOURCE_PASSWORD: admin
 
   postgres:
+    container_name: postgres
     image: postgres:latest
     platform: linux/amd64
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: user_central
+      POSTGRES_USER: manhnv
+      POSTGRES_PASSWORD: 06022003
     ports:
-      - "6543:5432"
+      - 5432:5432
+    networks:
+      - app-network
 
-  
-
-  keycloak-mysql:
-    container_name: keycloak-mysql
-    image: mysql:5.7
+  mysql:
+    container_name: mysql
+    image: mysql:8
     platform: linux/amd64
     volumes:
-      - ./mysql_keycloak_data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: keycloak
       MYSQL_USER: keycloak
       MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
 
   keycloak:
     container_name: keycloak
     image: quay.io/keycloak/keycloak:23.0.3
 #    command: [ "start-dev", "--import-realm" ]
-    command: [ "start-dev"]
+    command: ["start-dev"]
     depends_on:
-      - keycloak-mysql
+      - mysql
     environment:
       DB_VENDOR: MYSQL
-      DB_ADDR: keycloak-mysql
+      DB_ADDR: mysql
       DB_DATABASE: keycloak
       DB_USER: keycloak
       DB_PASSWORD: password
@@ -55,23 +60,12 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
     ports:
       - "8080:8080"
-
-  mysql:
-    image: mysql:8
-    container_name: mysql
-    restart: always
     networks:
       - app-network
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql-data:/var/lib/mysql  
 
   redis:
     image: redis:latest
-    container_name: redis-cache
+    container_name: redis
     restart: always
     command: ["redis-server", "--appendonly", "yes"]
     ports:
@@ -79,7 +73,7 @@ services:
     volumes:
       - redis-data:/data
     networks:
-      - keycloak-network
+      - app-network
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
@@ -89,8 +83,7 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
     networks:
-      - keycloak-network
-
+      - app-network
       
   kafka:
     image: confluentinc/cp-kafka:latest
@@ -111,8 +104,18 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_CREATE_TOPICS: "keycloak-events:1:1"
-      KAFKA_LOG_RETENTION_HOURS: 168 
+      KAFKA_LOG_RETENTION_HOURS: 168
     networks:
-      - keycloak-network
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+  mysql-data:
+
+
 #    volumes:
 #      - ./keycloak-realms/:/opt/keycloak/data/import/

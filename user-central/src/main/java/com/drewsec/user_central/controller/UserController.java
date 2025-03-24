@@ -1,66 +1,54 @@
 package com.drewsec.user_central.controller;
 
-import com.drewsec.user_central.payload.request.LoginRequest;
-import com.drewsec.user_central.payload.request.SignupRequest;
-import com.drewsec.user_central.payload.request.UpdateUserRequest;
+import com.drewsec.user_central.definitions.constants.ApiMessageConstants;
+import com.drewsec.user_central.dto.UserDto;
+import com.drewsec.user_central.dto.response.ApiResponse;
+import com.drewsec.user_central.dto.response.UserResponse;
 import com.drewsec.user_central.service.UserService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/v1/users")
 @Tag(name = "user", description = "User Endpoints")
 @RequiredArgsConstructor
 public class UserController {
 
 	private final UserService userService;
 
-	@PostMapping("/signin")
-	@Operation(summary = "Authenticate user", description = "Authenticate user with username and password")
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "User authenticated successfully!"),
-			@ApiResponse(responseCode = "400", description = "Username is not found!"),
-			@ApiResponse(responseCode = "400", description = "Password is not correct!") })
-	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-		return userService.authenticateUser(loginRequest);
+	@GetMapping
+	public ResponseEntity<ApiResponse<String>> getCurrentUser() {
+		return ResponseEntity.ok(new ApiResponse<>(200,
+						ApiMessageConstants.USER_FOUND,
+						userService.getUserAuthenticationName()));
 	}
 
-	@PostMapping("/signup")
-	@Operation(summary = "Create authenticated users", description = "Create Authenticated user with username, email and password")
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "User registered successfully!"),
-			@ApiResponse(responseCode = "400", description = "Username is already taken!"),
-			@ApiResponse(responseCode = "400", description = "Email is already in use!") })
-	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-		return userService.registerUser(signUpRequest);
+	@GetMapping("/except-self")
+	public ResponseEntity<ApiResponse<List<UserResponse>>> getAllUsersExceptSelf() {
+		return ResponseEntity.ok(new ApiResponse<>(200,
+				ApiMessageConstants.USER_FOUND,
+				userService.finAllUsersExceptSelf()));
 	}
 
-	@DeleteMapping("/delete/{userId}")
-	@Operation(summary = "Delete user account", description = "Delete user account by ID")
-	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "User account deleted successfully!"),
-			@ApiResponse(responseCode = "400", description = "User not found!"),
-			@ApiResponse(responseCode = "500", description = "Internal Server Error")
-	})
-	public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
-		return userService.deleteUser(userId);
+	@GetMapping("/{id}")
+	public ResponseEntity<ApiResponse<UserDto>> getUserById(@PathVariable String id) {
+		return ResponseEntity.ok(new ApiResponse<>(200,
+				ApiMessageConstants.USER_FOUND,
+				userService.getUserById(id)));
 	}
 
-	@PutMapping("/update/{userId}")
-	@Operation(summary = "Update user account", description = "Update user account information by ID")
-	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "User account updated successfully!"),
-			@ApiResponse(responseCode = "400", description = "User not found!"),
-			@ApiResponse(responseCode = "400", description = "New password is not valid!"),
-			@ApiResponse(responseCode = "500", description = "Internal Server Error")
-	})
-	public ResponseEntity<?> updateUser(@PathVariable Long userId,
-			@Valid @RequestBody UpdateUserRequest updateUserRequest) {
-		return userService.updateUser(userId, updateUserRequest);
+	@GetMapping("/all")
+	public ResponseEntity<ApiResponse<List<UserDto>>> getAllUsers() {
+		return ResponseEntity.ok(new ApiResponse<>(200,
+				ApiMessageConstants.USER_FOUND,
+				userService.getAllUsers()));
 	}
 
 }
