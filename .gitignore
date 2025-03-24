@@ -33,3 +33,5 @@ build/
 .vscode/
 
 mysql_keycloak_data/
+
+post/src/main/resources/key-firebase.json
