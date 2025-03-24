@@ -49,3 +49,15 @@ application:
   file:
     uploads:
       media-output-path: ./uploads
+
+---
+
+open:
+  api:
+    title: "User Central"
+    version: "1.0.0"
+    description: ""
+    serverUrl: "http://localhost:8081"
+    serverDescription: "Api for client implement"
+    license: "Apache 2.0"
+    licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0.html"

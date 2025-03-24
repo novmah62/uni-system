@@ -7,11 +7,8 @@ import com.drewsec.user_central.dto.response.UserResponse;
 import com.drewsec.user_central.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,31 +21,35 @@ public class UserController {
 	private final UserService userService;
 
 	@GetMapping
-	public ResponseEntity<ApiResponse<String>> getCurrentUser() {
-		return ResponseEntity.ok(new ApiResponse<>(200,
-						ApiMessageConstants.USER_FOUND,
-						userService.getUserAuthenticationName()));
+	@ResponseStatus(HttpStatus.OK)
+	public ApiResponse<String> getCurrentUser() {
+		return new ApiResponse<>(200,
+				ApiMessageConstants.USER_FOUND,
+				userService.getUserAuthenticationName());
 	}
 
 	@GetMapping("/except-self")
-	public ResponseEntity<ApiResponse<List<UserResponse>>> getAllUsersExceptSelf() {
-		return ResponseEntity.ok(new ApiResponse<>(200,
+	@ResponseStatus(HttpStatus.OK)
+	public ApiResponse<List<UserResponse>> getAllUsersExceptSelf() {
+		return new ApiResponse<>(200,
 				ApiMessageConstants.USER_FOUND,
-				userService.finAllUsersExceptSelf()));
+				userService.finAllUsersExceptSelf());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<ApiResponse<UserDto>> getUserById(@PathVariable String id) {
-		return ResponseEntity.ok(new ApiResponse<>(200,
+	@ResponseStatus(HttpStatus.OK)
+	public ApiResponse<UserDto> getUserById(@PathVariable String id) {
+		return new ApiResponse<>(200,
 				ApiMessageConstants.USER_FOUND,
-				userService.getUserById(id)));
+				userService.getUserById(id));
 	}
 
 	@GetMapping("/all")
-	public ResponseEntity<ApiResponse<List<UserDto>>> getAllUsers() {
-		return ResponseEntity.ok(new ApiResponse<>(200,
+	@ResponseStatus(HttpStatus.OK)
+	public ApiResponse<List<UserDto>> getAllUsers() {
+		return new ApiResponse<>(200,
 				ApiMessageConstants.USER_FOUND,
-				userService.getAllUsers()));
+				userService.getAllUsers());
 	}
 
 }
