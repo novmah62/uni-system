@@ -13,7 +13,5 @@ public interface MessageService {
     List<MessageResponse> findChatMessages(String chatId);
     void setMessagesToSeen(String chatId);
     void uploadMediaMessage(String chatId, MultipartFile file);
-    String getSenderId(Chat chat);
-    String getRecipientId(Chat chat);
 
 }
