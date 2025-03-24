@@ -54,7 +54,6 @@ public class PostService {
     RedisService redisService;
     KafkaProducerService kafkaProducerService;
 
-
     public CreatePostResponse createPost(CreatePostRequest request){
         String userId = userService.getUserAuthenticationName();
         Post post = Post.builder()

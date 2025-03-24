@@ -1,18 +1,15 @@
 package com.drewsec.user_central.service;
 
-import com.drewsec.user_central.payload.request.LoginRequest;
-import com.drewsec.user_central.payload.request.SignupRequest;
-import com.drewsec.user_central.payload.request.UpdateUserRequest;
-import org.springframework.http.ResponseEntity;
+import com.drewsec.user_central.dto.UserDto;
+import com.drewsec.user_central.dto.response.UserResponse;
+
+import java.util.List;
 
 public interface UserService {
 
-    ResponseEntity<?> authenticateUser(LoginRequest loginRequest);
-
-    ResponseEntity<?> registerUser(SignupRequest signUpRequest);
-
-    ResponseEntity<?> deleteUser(Long userId);
-
-    ResponseEntity<?> updateUser(Long userId, UpdateUserRequest updateUserRequest);
+    List<UserResponse> finAllUsersExceptSelf();
+    String getUserAuthenticationName();
+    UserDto getUserById(String userId);
+    List<UserDto> getAllUsers();
 
 }
