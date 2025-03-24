@@ -11,27 +11,41 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:6543/postgres?useSSL=false
-    username: postgres
-    password: admin
+    url: jdbc:postgresql://localhost:5432/user_central
+    username: manhnv
+    password: 06022003
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
-        format-sql: true
+        format_sql: false
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: false
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/uni-system
+      client:
+        provider:
+          external:
+            issuer-uri: http://localhost:8080/realms/uni-system
+        registration:
+          external:
+            provider: external
+            client-name: user-central
+            client-id: user-central
+            client-secret: cG8x7l5sy4vds1o4R3jjHw4L6PwM3Bio
+            scope: openid, offline_access, profile
+            authorization-grant-type: authorization_code
 
+---
 
-
-security:
-  oauth2:
-    resource-server:
-      jwt:
-        issuer-uri=http://keycloak:8080/realms/uni-system
-jwt:
-  issuer_uri: http://keycloak:8080/realms/uni-system-realm/protocol/openid-connect/token
-  client_id: spring-client
-  client_secret: eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJiMWM3ODZkMC1hOGJhLTQyYWYtYTYwZS1jYzg1MzM0NmQ1NDUifQ.eyJleHAiOjE3NDE2ODIyOTMsImlhdCI6MTc0MTU5NTg5MywianRpIjoiMjljNTA3ODAtZTAzOC00YmYzLWI1NTQtZmJiYjFmNWRlMDcwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy91bmktc3lzdGVtIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy91bmktc3lzdGVtIiwidHlwIjoiSW5pdGlhbEFjY2Vzc1Rva2VuIn0.UUCESPLqyy4YokytmonA3DLuYY_hsEEok5F6bUWlrEE
-  grant_type: client_credentials
-  scope: openid offline_access
+application:
+  file:
+    uploads:
+      media-output-path: ./uploads
