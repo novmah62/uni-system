@@ -1,0 +1,24 @@
+@import 'ngx-toastr/toastr';
+@import "primeng/resources/themes/vela-green/theme.css";
+@import "primeng/resources/primeng.css";
+*{
+  font-family: "Comfortaa Medium";
+}
+
+.name {
+  font-size: 15px;
+  font-weight: bold;
+}
+.note{
+  font-size: 10px;
+  font-style: italic;
+}
+.flex-d{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-b{
+  display: flex;
+  align-items: center;
+}
