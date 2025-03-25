@@ -1,0 +1,147 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="overlay" *ngIf="isPopupOpen" (click)="closePopup()"></div>
+<div class="popup" *ngIf="isPopupOpen">
+  <i class="bi bi-x-lg" style="position: absolute;top:10px; right: 10px" (click)="closePopup()"></i>
+  <div class="popup-content">
+    <h6>Bình luận</h6>
+    <textarea style="background:white; color:black" [(ngModel)]="newComment" placeholder="Nhập bình luận..."></textarea>
+    <button (click)="addComment()">Gửi</button>
+    <ul>
+      <li *ngFor="let comment of comments">{{ comment }}</li>
+    </ul>
+  </div>
+</div>
+<div class="container">
+  <div class="profile-wrapper">
+    <div class="profile-section-user">
+      <div class="profile-cover-img"><img
+        src="https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-1/387179218_1372127113699239_4722949875462203661_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=e99d92&_nc_ohc=Qp6vrH17EG0Q7kNvgGdtZYr&_nc_oc=AdnZSBTfZ-mnqTgfgAKXOnqfv2iQwVUdJMdbEBZxBap85ruvc5GsByRNdcXJIJ_EiPE&_nc_zt=24&_nc_ht=scontent.fhan14-2.fna&_nc_gid=tzyTj6kw8XEu0oqA0xyxGA&oh=00_AYHAG-G56Wnl2PuCLCcRZ0Ms2T3C7IsS9dWGS_1-9dncrg&oe=67E74873"
+        alt=""></div>
+      <div class="profile-info-brief p-3"><img class="img-fluid user-profile-avatar"
+                                               src="https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-1/387179218_1372127113699239_4722949875462203661_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=e99d92&_nc_ohc=Qp6vrH17EG0Q7kNvgGdtZYr&_nc_oc=AdnZSBTfZ-mnqTgfgAKXOnqfv2iQwVUdJMdbEBZxBap85ruvc5GsByRNdcXJIJ_EiPE&_nc_zt=24&_nc_ht=scontent.fhan14-2.fna&_nc_gid=tzyTj6kw8XEu0oqA0xyxGA&oh=00_AYHAG-G56Wnl2PuCLCcRZ0Ms2T3C7IsS9dWGS_1-9dncrg&oe=67E74873"
+                                               alt="">
+        <div class="text-center">
+          <h5 class="text-uppercase mb-4">{{ posts[0].userInfo.firstName }} {{ posts[0].userInfo.firstName }}</h5>
+          <!--          <p class="text-muted fz-base">Dep trai</p>-->
+        </div>
+      </div>
+      <!-- /.profile-info-brief -->
+      <hr class="m-0">
+      <div class="hidden-sm-down">
+        <hr class="m-0">
+        <div class="profile-info-contact p-4">
+          <h6 class="mb-3">Thông tin cơ bản</h6>
+          <table class="table">
+            <tbody>
+            <tr>
+              <td><strong>EMAIL:</strong></td>
+              <td>
+                <p class="text-muted mb-0">{{ posts[0].userInfo.email }}</p>
+              </td>
+            </tr>
+            <!--            <tr>-->
+            <!--              <td><strong>PHONE:</strong></td>-->
+            <!--              <td>-->
+            <!--                <p class="text-muted mb-0">01145525755</p>-->
+            <!--              </td>-->
+            <!--            </tr>-->
+            <!--            <tr>-->
+            <!--              <td><strong>SKYPE:</strong></td>-->
+            <!--              <td>-->
+            <!--                <p class="text-muted mb-0">Rathemes</p>-->
+            <!--              </td>-->
+            <!--            </tr>-->
+            <!--            </tbody>-->
+            <!--          </table>-->
+            <!--        </div>-->
+            <!--        &lt;!&ndash; /.profile-info-contact &ndash;&gt;-->
+            <!--        <hr class="m-0">-->
+            <!--        <div class="profile-info-general p-4">-->
+            <!--          <h6 class="mb-3">General Information</h6>-->
+            <!--          <table class="table">-->
+            <!--            <tbody>-->
+            <!--            <tr>-->
+            <!--              <td><strong>JOB:</strong></td>-->
+            <!--              <td>-->
+            <!--                <p class="text-muted mb-0">Web Developer</p>-->
+            <!--              </td>-->
+            <!--            </tr>-->
+            <!--            <tr>-->
+            <!--              <td><strong>POSITION:</strong></td>-->
+            <!--              <td>-->
+            <!--                <p class="text-muted mb-0">Team Manager</p>-->
+            <!--              </td>-->
+            <!--            </tr>-->
+            <!--            <tr>-->
+            <!--              <td><strong>STUDIED:</strong></td>-->
+            <!--              <td>-->
+            <!--                <p class="text-muted mb-0">Computer Science</p>-->
+            <!--              </td>-->
+            <!--            </tr>-->
+            <!--            <tr>-->
+            <!--              <td><strong>LAST SEEN:</strong></td>-->
+            <!--              <td>-->
+            <!--                <p class="text-muted mb-0">Yesterday 8:00 AM</p>-->
+            <!--              </td>-->
+            <!--            </tr>-->
+            </tbody>
+          </table>
+        </div>
+        <!-- /.profile-info-general -->
+        <hr class="m-0">
+      </div>
+      <!-- /.hidden-sm-down -->
+    </div>
+    <!-- /.profile-section-user -->
+    <div class="profile-section-main">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs profile-tabs" role="tablist">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#profile-overview" role="tab">Hoat
+          động</a></li>
+      </ul>
+      <!-- /.nav-tabs -->
+      <!-- Tab panes -->
+      <div class="tab-content profile-tabs-content">
+        <div class="tab-pane active" id="profile-overview" role="tabpanel">
+          <div class="post-editor">
+            <textarea name="post-field" id="post-field" class="post-field" placeholder="Viết gì đó!"
+                      [(ngModel)]="createPostRequest.content"></textarea>
+            <div class="d-flex">
+              <button class="btn btn-success px-4 py-1" (click)="upPost()">Đăng bài</button>
+            </div>
+          </div>
+          <!-- /.post-editor -->
+          <div class="stream-posts" *ngFor="let post of posts">
+            <div class="stream-post">
+              <div class="sp-author">
+                <a href="#" class="sp-author-avatar"><img
+                  src="https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-1/387179218_1372127113699239_4722949875462203661_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=e99d92&_nc_ohc=Qp6vrH17EG0Q7kNvgGdtZYr&_nc_oc=AdnZSBTfZ-mnqTgfgAKXOnqfv2iQwVUdJMdbEBZxBap85ruvc5GsByRNdcXJIJ_EiPE&_nc_zt=24&_nc_ht=scontent.fhan14-2.fna&_nc_gid=tzyTj6kw8XEu0oqA0xyxGA&oh=00_AYHAG-G56Wnl2PuCLCcRZ0Ms2T3C7IsS9dWGS_1-9dncrg&oe=67E74873"
+                  alt=""></a>
+                <h6 class="name">{{ post.userInfo.firstName }} {{ post.userInfo.lastName }}</h6>
+              </div>
+              <div class="sp-content">
+                <div class="sp-info note">{{ timeAgo(post.updatedAt) }}</div>
+                <p class="sp-paragraph mb-0">{{ post.content }}</p>
+              </div>
+              <hr>
+              <div class="flex-b">
+                <div style="display: none">
+                  <i class="bi bi-heart" style="color: red; margin-right: 10px"></i>
+                </div>
+                <div>
+                  {{ post.likeCount }}
+                  <i class="bi bi-heart-fill" style="color: red; margin-right: 10px"></i>
+                </div>
+                <div>
+                  {{ post.commentCount }}
+                  <i class="bi bi-chat-dots" (click)="openPopup(post)" style="cursor: pointer"></i>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

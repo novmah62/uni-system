@@ -31,5 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
-
+post/src/main/resources/key-firebase.json
 */key-firebase.json
