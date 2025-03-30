@@ -46,8 +46,8 @@ services:
   keycloak:
     container_name: keycloak
     image: quay.io/keycloak/keycloak:23.0.3
-#    command: [ "start-dev", "--import-realm" ]
-    command: ["start-dev"]
+    command: [ "start-dev", "--import-realm" ]
+#    command: ["start-dev"]
     depends_on:
       - mysql
     environment:
@@ -60,8 +60,8 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
     ports:
       - "8080:8080"
-#    volumes:
-#      - ./keycloak-realms/:/opt/keycloak/data/import/
+    volumes:
+      - ./keycloak-realms/:/opt/keycloak/data/import/
     networks:
       - app-network
 
@@ -119,5 +119,3 @@ volumes:
   mysql-data:
 
 
-#    volumes:
-#      - ./keycloak-realms/:/opt/keycloak/data/import/

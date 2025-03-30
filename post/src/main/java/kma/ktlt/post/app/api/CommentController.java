@@ -28,7 +28,7 @@ public class CommentController {
 
     CommentService commentService;
 
-    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
+//    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
     @PostMapping
     public ResponseData<CreateCommentResponse> createComment(
             @RequestBody @Valid CreateCommentRequest request) {
@@ -40,7 +40,7 @@ public class CommentController {
                 response
         );
     }
-    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
+//    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
 
     @PutMapping("/{commentId}")
     public ResponseData<CreateCommentResponse> updateComment(
@@ -55,7 +55,7 @@ public class CommentController {
         );
     }
 
-    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
+//    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
 
     @DeleteMapping("/comment-owner/{postId}")
     public ResponseData<Void> deleteCommentByOwner(
@@ -68,7 +68,7 @@ public class CommentController {
         );
     }
 
-    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
+//    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
 
     @DeleteMapping("/post-owner/{postId}")
     public ResponseData<Void> deletePostByPostOwner(
@@ -82,7 +82,7 @@ public class CommentController {
     }
 
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
+//    @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping("/admin/{postId}")
     public ResponseData<Void> deleteCommentByAdmin(
             @PathVariable Long postId) {
