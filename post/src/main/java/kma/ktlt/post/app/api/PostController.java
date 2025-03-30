@@ -39,7 +39,7 @@ public class PostController {
 
     PostService postService;
 
-    @PreAuthorize("hasAnyRole('USER' , 'ADMIN' ,'GUEST')")
+//    @PreAuthorize("hasAnyRole('USER' , 'ADMIN' ,'GUEST')")
 
 
     @GetMapping
@@ -67,7 +67,7 @@ public class PostController {
     }
 
 
-    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
+//    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
 
     @GetMapping("/{postId}/comments")
     public ResponseData<PageResponse<List<CommentResponse>>> getDirectCommentOfPost(
@@ -85,7 +85,7 @@ public class PostController {
         );
     }
 
-    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
+//    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
 
 
     @PostMapping
@@ -100,7 +100,7 @@ public class PostController {
         );
     }
 
-    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
+//    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
 
     @PutMapping("/{postId}")
     public ResponseData<CreatePostResponse> updatePost(
@@ -114,7 +114,7 @@ public class PostController {
                 response
         );
     }
-    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
+//    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
 
     @DeleteMapping("/post-owner/{postId}")
     public ResponseData<Void> deletePostByOwner(
@@ -126,7 +126,7 @@ public class PostController {
                 LocalDateTime.now()
         );
     }
-    @PreAuthorize("hasAnyRole('ADMIN')")
+//    @PreAuthorize("hasAnyRole('ADMIN')")
 
     @DeleteMapping("/admin/{postId}")
     public ResponseData<Void> deletePostByAdmin(

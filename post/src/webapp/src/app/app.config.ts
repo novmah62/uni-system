@@ -22,4 +22,5 @@ export const appConfig: ApplicationConfig = {
       return initFn();
     })
   ]
+
 };
