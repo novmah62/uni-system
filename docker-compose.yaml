@@ -1,19 +1,5 @@
 services:
 
-#  user-central:
-#    build:
-#      context: ./user-central
-#      dockerfile: Dockerfile
-#    image: user-central:latest
-#    ports:
-#      - "5865:5865"
-#    depends_on:
-#      - postgres
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
-#      SPRING_DATASOURCE_USERNAME: postgres
-#      SPRING_DATASOURCE_PASSWORD: admin
-
   postgres:
     container_name: postgres
     image: postgres:latest
@@ -117,5 +103,3 @@ networks:
 volumes:
   redis-data:
   mysql-data:
-
-
