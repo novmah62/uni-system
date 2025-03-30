@@ -25,7 +25,8 @@
     "ng-recaptcha": "^13.2.1",
     "ngx-spinner": "^16.0.0",
     "primeicons": "^7.0.0",
-    "primeng": "^17.18.10"
+    "primeng": "^17.18.10",
+    "keycloak-js": "^26.1.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.4",

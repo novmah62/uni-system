@@ -18,7 +18,7 @@ export class KeycloakService {
       this._keycloak = new Keycloak({
         url: 'http://localhost:8080',
         realm: 'uni-system',
-        clientId: 'user-central-ui'
+        clientId: 'post-ui'
       });
     }
     return this._keycloak;
@@ -49,7 +49,7 @@ export class KeycloakService {
   }
 
   logout() {
-    return this.keycloak.logout({redirectUri: 'http://localhost:4400'});
+    return this.keycloak.logout({redirectUri: 'http://localhost:4200'});
   }
 
   accountManagement() {
