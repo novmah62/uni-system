@@ -29,7 +29,8 @@ export class ProfileComponent implements OnInit {
   selectedPost: any = null;
   createCommentRequest: any = {}
   cuUser: any = {};
-
+  isLiked: boolean = false;
+  createLikeRequest: any = {};
   constructor(private userService: UserService,
               private router: Router,
               private cookieService: CookieService,
@@ -50,11 +51,11 @@ export class ProfileComponent implements OnInit {
       this.posts.forEach((item: { userInfo: { firstName: any; }; }) => {
         console.log(item.userInfo.firstName)
       })
-      console.log(this.posts)
+
     })
-    // this.userService.auth().subscribe(res => {
-    //   this.cuUser = res.data;
-    // })
+    this.userService.auth().subscribe(res => {
+      this.cuUser = res.data;
+    })
   }
 
   getCmtByPost(id: any) {
@@ -126,4 +127,17 @@ export class ProfileComponent implements OnInit {
     this.messageService.add({severity: 'error', summary: 'Thành công', detail: content});
 
   }
+  like(id: any){
+    this.createLikeRequest.postId = id;
+    this.userService.like(this.createLikeRequest).subscribe(res => {
+      this.isLiked = true;
+    })
+  }
+  unlike(id: any){
+    this.createLikeRequest.postId = id;
+    this.userService.like(this.createLikeRequest).subscribe(res => {
+      this.isLiked = false;
+    })
+  }
+
 }
