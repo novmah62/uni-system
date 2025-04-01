@@ -153,8 +153,6 @@ public class PostService {
             if(userDTO1.isPresent()){
                 userDTO = userDTO1.get();
             }
-
-
             if (userDTO != null) {
                 UserResponse userResponse = UserResponse.builder()
                         .id(userDTO.getId())

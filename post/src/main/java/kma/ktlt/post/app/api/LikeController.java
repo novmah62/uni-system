@@ -28,7 +28,7 @@ public class LikeController {
     LikeService likeService;
 
 
-    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
+//    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
 
     @PutMapping("/like")
     public ResponseData<LikeResponse> like(CreateLikeRequest request) {
@@ -41,7 +41,7 @@ public class LikeController {
         );
     }
 
-    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
+//    @PreAuthorize("hasAnyRole('USER' , 'ADMIN')")
 
     @PutMapping("/unlike")
     public ResponseData<LikeResponse> unlike(CreateLikeRequest request) {
