@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public class RedisService {
     private final StringRedisTemplate redisTemplate;
     private final ObjectMapper objectMapper;
-
     public Optional<UserDTO> getUserById(String userId) {
         String userJson = redisTemplate.opsForValue().get("user:" + userId);
         if (userJson == null) return Optional.empty();

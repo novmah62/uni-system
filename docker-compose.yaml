@@ -1,19 +1,5 @@
 services:
 
-#  user-central:
-#    build:
-#      context: ./user-central
-#      dockerfile: Dockerfile
-#    image: user-central:latest
-#    ports:
-#      - "5865:5865"
-#    depends_on:
-#      - postgres
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
-#      SPRING_DATASOURCE_USERNAME: postgres
-#      SPRING_DATASOURCE_PASSWORD: admin
-
   postgres:
     container_name: postgres
     image: postgres:latest
@@ -46,8 +32,8 @@ services:
   keycloak:
     container_name: keycloak
     image: quay.io/keycloak/keycloak:23.0.3
-#    command: [ "start-dev", "--import-realm" ]
-    command: ["start-dev"]
+    command: [ "start-dev", "--import-realm" ]
+#    command: ["start-dev"]
     depends_on:
       - mysql
     environment:
@@ -60,8 +46,8 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
     ports:
       - "8080:8080"
-#    volumes:
-#      - ./keycloak-realms/:/opt/keycloak/data/import/
+    volumes:
+      - ./keycloak-realms/:/opt/keycloak/data/import/
     networks:
       - app-network
 
@@ -117,7 +103,3 @@ networks:
 volumes:
   redis-data:
   mysql-data:
-
-
-#    volumes:
-#      - ./keycloak-realms/:/opt/keycloak/data/import/
