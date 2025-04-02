@@ -12,10 +12,9 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({eventCoalescing: true}),
     provideRouter(routes),
-    provideHttpClient(), MessageService, ToastModule,
     provideHttpClient(
       withInterceptors([keycloakHttpInterceptor])
-    ),
+    ), MessageService, ToastModule,
     provideAppInitializer(() => {
       const initFn = ((key: KeycloakService) => {
         return () => key.init()
