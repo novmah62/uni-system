@@ -3,6 +3,7 @@ package kma.ktlt.post.domain.user;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +14,17 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class RedisService {
     private final StringRedisTemplate redisTemplate;
     private final ObjectMapper objectMapper;
+
     public Optional<UserDTO> getUserById(String userId) {
         String userJson = redisTemplate.opsForValue().get("user:" + userId);
-        if (userJson == null) return Optional.empty();
+        if (userJson == null) {
+            log.error("User Redis Null");
+            return Optional.empty();
+        }
 
         try {
             return Optional.of(objectMapper.readValue(userJson, UserDTO.class));
