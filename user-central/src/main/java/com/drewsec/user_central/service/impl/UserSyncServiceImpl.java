@@ -25,19 +25,37 @@ public class UserSyncServiceImpl implements UserSyncService {
     private final UserMapper userMapper;
     private final CacheUtil cacheUtil;
 
-    @Override
-    public void synchronizeWithIdp(Jwt token) {
-        log.info("Synchronizing user with idp");
-        getUserEmail(token).ifPresent(userEmail -> {
-            log.info("Synchronizing user having email {}", userEmail);
-            Optional<User> optUser = userRepository.findByEmail(userEmail);
-            User user = userMapper.fromTokenAttributes(token.getClaims());
-            optUser.ifPresent(value -> user.setId(value.getId()));
-            userRepository.save(user);
-            cacheUtil.saveUser(userMapper.toUserDto(user));
-        });
-
-    }
+//    @Override
+//    public void synchronizeWithIdp(Jwt token) {
+//        log.info("Synchronizing user with idp");
+//        getUserEmail(token).ifPresent(userEmail -> {
+//            log.info("Synchronizing user having email {}", userEmail);
+//            Optional<User> optUser = userRepository.findByEmail(userEmail);
+//            User user = userMapper.fromTokenAttributes(token.getClaims());
+//            optUser.ifPresent(value -> user.setId(value.getId()));
+//            userRepository.save(user);
+//            cacheUtil.saveUser(userMapper.toUserDto(user));
+//        });
+//
+//    }
+@Override
+public void synchronizeWithIdp(Jwt token) {
+    log.info("Synchronizing user with idp");
+    getUserEmail(token).ifPresent(userEmail -> {
+        log.info("Synchronizing user having email {}", userEmail);
+        Optional<User> optUser = userRepository.findByEmail(userEmail);
+        // Lấy giá trị của claim "sub" từ token
+        String userId = token.getClaim("sub");
+        // Tạo đối tượng user từ các thuộc tính của token
+        User user = userMapper.fromTokenAttributes(token.getClaims());
+        // Đặt id của user bằng giá trị của "sub"
+        user.setId(userId);
+        // Nếu người dùng đã tồn tại, giữ lại id của người dùng đã có
+        optUser.ifPresent(existingUser -> user.setId(existingUser.getId()));
+        userRepository.save(user);
+        cacheUtil.saveUser(userMapper.toUserDto(user));
+    });
+}
 
     @Override
     @PostConstruct
