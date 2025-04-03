@@ -1,7 +1,5 @@
-import {Component, effect, inject} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import Keycloak from 'keycloak-js';
-import {KEYCLOAK_EVENT_SIGNAL, KeycloakEventType, ReadyArgs, typeEventArgs} from 'keycloak-angular';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
